@@ -48,7 +48,6 @@ const onRefresh = useCallback(async () => {
     setBooks(bookList);
     setCategories(categoryList);
   } catch (e) {
-    showMessage("Không thể làm mới", getErrorMessage(e));
   } finally {
     setRefreshing(false);
   }

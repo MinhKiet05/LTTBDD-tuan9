@@ -3,7 +3,6 @@ import { ScrollView, StyleSheet, Text, View,Pressable } from "react-native";
 import { Header } from "../components/Header";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { MenuItem } from "../components/MenuItem";
-import { TodoBox } from "../components/TodoBox";
 import { useAuth, useWishlist } from "../store/hooks";
 import { TabScreenProps } from "../navigation/types";
 import { colors } from "../theme";
@@ -24,9 +23,8 @@ export function AccountScreen({ navigation }: TabScreenProps<"Account">) {
             {user.phone ? <Text style={styles.email}>📞 {user.phone}</Text> : null}
 <Pressable
   onPress={() => navigation.navigate("EditProfile")}
-  style={styles.editBtn}
 >
-  <Text style={styles.editText}>✎ Chỉnh sửa</Text>
+  <Text>✎ Chỉnh sửa</Text>
 </Pressable>
           </View>
         ) : (
