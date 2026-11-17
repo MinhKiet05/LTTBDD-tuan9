@@ -36,6 +36,23 @@ export function HomeScreen({ navigation, route }: TabScreenProps<"Home">) {
   const debouncedKeyword = useDebounce(keyword, 400); // gõ xong 400ms mới lọc
 
   // TODO BT9.6: kéo-để-làm-mới. Tạo state `refreshing` + hàm onRefresh gọi lại getBooks/getCategories (Promise.all)
+  const [refreshing, setRefreshing] = useState(false);
+
+const onRefresh = useCallback(async () => {
+  setRefreshing(true);
+  try {
+    const [bookList, categoryList] = await Promise.all([
+      getBooks(),
+      getCategories(),
+    ]);
+    setBooks(bookList);
+    setCategories(categoryList);
+  } catch (e) {
+    showMessage("Không thể làm mới", getErrorMessage(e));
+  } finally {
+    setRefreshing(false);
+  }
+}, []);
   // KHÔNG bật màn loading toàn trang (giữ danh sách đang hiển thị). Rồi truyền refreshing/onRefresh cho <BookGrid>
   // (BookGrid đã nhận sẵn 2 prop này).
   const load = useCallback(async () => {
@@ -112,6 +129,8 @@ export function HomeScreen({ navigation, route }: TabScreenProps<"Home">) {
         <BookGrid
           data={visibleBooks}
           onPressBook={(b) => navigation.navigate("BookDetail", { bookId: b.id })}
+          refreshing={refreshing}
+  onRefresh={onRefresh}
           ListHeaderComponent={header}
           ListEmptyComponent={
             <EmptyState

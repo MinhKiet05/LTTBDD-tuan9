@@ -163,10 +163,10 @@
   "users": [
     {
       "id": 1,
-      "name": "Tran Huynh Minh Kiet",
+      "name": "Minh Kiet",
       "email": "demo@bookstore.vn",
       "password": "123456",
-      "phone": "0877619159"
+      "phone": "0877619111"
     },
     {
       "id": 2,
@@ -272,6 +272,27 @@
       "status": "pending",
       "createdAt": "2026-11-17T11:50:41.195Z",
       "id": 4
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "bookId": 2,
+          "title": "Nhà Giả Kim",
+          "price": 79000,
+          "quantity": 2
+        }
+      ],
+      "total": 158000,
+      "address": {
+        "name": "Tran Huynh Minh Kiet",
+        "phone": "0877619159",
+        "address": "12 Nguyen Van Bao"
+      },
+      "paymentMethod": "bank",
+      "status": "pending",
+      "createdAt": "2026-11-17T12:16:23.660Z",
+      "id": 5
     }
   ],
   "reviews": [
