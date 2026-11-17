@@ -163,10 +163,10 @@
   "users": [
     {
       "id": 1,
-      "name": "Học viên Demo",
+      "name": "Tran Huynh Minh Kiet",
       "email": "demo@bookstore.vn",
       "password": "123456",
-      "phone": "0901234567"
+      "phone": "0877619159"
     },
     {
       "id": 2,
@@ -251,6 +251,27 @@
       "paymentMethod": "cod",
       "status": "pending",
       "createdAt": "2026-10-22T08:05:00.000Z"
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "bookId": 3,
+          "title": "Clean Code",
+          "price": 389000,
+          "quantity": 2
+        }
+      ],
+      "total": 778000,
+      "address": {
+        "name": "Học viên Demo",
+        "phone": "0901234567",
+        "address": "12 Nguyen Van Bao"
+      },
+      "paymentMethod": "bank",
+      "status": "pending",
+      "createdAt": "2026-11-17T11:50:41.195Z",
+      "id": 4
     }
   ],
   "reviews": [
@@ -334,7 +355,7 @@
       "title": "Đơn hàng #2 đang giao",
       "body": "Đơn hàng Clean Code của bạn đang trên đường giao đến.",
       "createdAt": "2026-10-23T07:30:00.000Z",
-      "read": false,
+      "read": true,
       "target": {
         "screen": "Orders"
       }
@@ -345,7 +366,7 @@
       "title": "Sách mới: Sapiens",
       "body": "Sapiens: Lược Sử Loài Người vừa có hàng trở lại.",
       "createdAt": "2026-10-22T10:00:00.000Z",
-      "read": false,
+      "read": true,
       "target": {
         "screen": "BookDetail",
         "bookId": 7

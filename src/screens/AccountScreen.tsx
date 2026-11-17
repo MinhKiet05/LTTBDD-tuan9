@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View,Pressable } from "react-native";
 import { Header } from "../components/Header";
 import { PrimaryButton } from "../components/PrimaryButton";
 import { MenuItem } from "../components/MenuItem";
@@ -21,8 +21,13 @@ export function AccountScreen({ navigation }: TabScreenProps<"Account">) {
             <Text style={styles.avatar}>🙂</Text>
             <Text style={styles.name}>{user.name}</Text>
             <Text style={styles.email}>{user.email}</Text>
-            {/* TODO BT9.4c: hiện SĐT (nếu có) + nút “✎ Chỉnh sửa” → navigation.navigate("EditProfile") */}
-            <TodoBox id="BT9.4c">{"Hiện số điện thoại + nút Chỉnh sửa → màn EditProfile"}</TodoBox>
+            {user.phone ? <Text style={styles.email}>📞 {user.phone}</Text> : null}
+<Pressable
+  onPress={() => navigation.navigate("EditProfile")}
+  style={styles.editBtn}
+>
+  <Text style={styles.editText}>✎ Chỉnh sửa</Text>
+</Pressable>
           </View>
         ) : (
           <View style={styles.profile}>
@@ -36,8 +41,16 @@ export function AccountScreen({ navigation }: TabScreenProps<"Account">) {
         )}
 
         <View style={styles.menu}>
-          {/* TODO BT9.5f / BT9.3d: thêm 2 <MenuItem> — 🔔 Thông báo → "Notifications"; 🧾 Đơn hàng của tôi → "Orders" */}
-          <TodoBox id="BT9.3d · BT9.5f">{"Thêm menu 🔔 Thông báo và 🧾 Đơn hàng của tôi"}</TodoBox>
+          <MenuItem
+  emoji="🔔"
+  label="Thông báo"
+  onPress={() => navigation.navigate("Notifications")}
+/>
+          <MenuItem
+  emoji="🧾"
+  label="Đơn hàng của tôi"
+  onPress={() => navigation.navigate("Orders")}
+/>
           <MenuItem emoji="❤️" label="Danh sách yêu thích" hint={ids.length ? `${ids.length} sách` : undefined} onPress={() => navigation.navigate("Wishlist")} />
         </View>
 
